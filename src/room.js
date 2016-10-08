@@ -15,20 +15,11 @@ function room(roomId){
       this.initialSetup();
       this.room.memory.initialized = true;
     }else{
-      this.creeps = this.room.memory.creeps;
-      for(int i = 0;i<this.creeps.length;i++){
-        this.creeps[i] = Game.getObjectById(spawns[i]); 
-      }
+      this.creeps = this.convertToObject(this.room.memory.creeps);
       this.roomPaths = this.room.memory.roomPaths;
       this.idleCreeps = this.room.memory.idleCreeps;
-      this.spawns = this.room.memory.spawns;//should be objects
-      for(int i = 0;i<this.spawns.length;i++){
-        this.spawns[i] = Game.getObjectById(spawns[i]); 
-      }
-      this.sources = this.room.memory.sources;//should be objects
-      for(int i = 0;i<this.sources.length;i++){
-        this.sources[i] = Game.getObjectById(this.sources[i]); 
-      }
+      this.spawns = this.convertToObject(this.room.memory.spawns);
+      this.sources = this.convertToObject(this.room.memory.sources);
       this.ACTIONS = { fill : creepBuilder.fillAction , move : creepBase.moveAction , build: creepBuilder.buildAction, repair : creepBuilder.repairAction}
     }
   }
@@ -77,6 +68,27 @@ room.spawnCreeps = function(){
 };
 
 room.saveMemory = function(){
-    
-}
+  this.room.memory.creeps = this.convertToId(this.creeps);
+  this.room.memory.roomPaths = this.roomPaths;
+  this.room.memory.idleCreeps = this.idleCreeps;
+  this.room.memory.spawns = this.convertToId(this.spawns);
+  this.room.memory.sources = this.convertToId(this.sources);
+  for(int i = 0;i<this.creeps.length;i++){
+    this.creeps[i].saveMemory(); 
+  }
+};
+
+room.convertToId = function(array){
+  for(int i = 0;i<array.length;i++){
+    array[i] = array[i].id; 
+  }
+  return array;
+};
+
+room.convertToObject = function(array){
+  for(int i = 0;i<array.length;i++){
+    array[i] = Game.getObjectById(array[i]); 
+  }
+  return array;
+};
 
