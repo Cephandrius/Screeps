@@ -88,6 +88,9 @@ creepBase.setSecondaryTarget = function(target){
 };
 
 creepBase.saveMemory = function(){
-  
+  this.creep.memory.primaryTarget = this.primaryTarget.id;
+  this.creep.memory.secondaryTarget = this.secondaryTarget.id;
+  this.creep.memory.action = this.action;
+  this.creep.memory.movePath = this.movePath;
 };
 module.exports = creepBase;
