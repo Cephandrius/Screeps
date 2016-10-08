@@ -3,7 +3,7 @@ This code has come from here. https://gist.github.com/nicbell/6081098
 I would like to thank nicbell of this code for such a versatile
 function. It makes my life much easier.
 */
-var compare = function (obj1, obj2) {
+var compareObjects = function (obj1, obj2) {
 	//Loop through properties in object 1
 	for (var p in obj1) {
 		//Check property exists on both objects
