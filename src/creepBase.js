@@ -18,12 +18,12 @@ notes: none
 function creepBase(creepId){
   var creep = Game.getObjectById(creepId);
   if(creep!=null){
-    this.primaryTarget = creep.memory.primaryTarget;
-    this.secondaryTarget = creep.memory.secondaryTarget;
+    this.primaryTarget = Game.getObjectById(creep.memory.primaryTarget);
+    this.secondaryTarget = Game.getObjectById(creep.memory.secondaryTarget);
     this.action = creep.memory.action;
     this.movePath = creep.memory.movePath; //Can be two things, an number or a string, the number says path to use in room memory , string is a serialized path
     this.creep = creep;
-    this.room = creep.memory.room;
+    this.room = Game.getObjectById(creep.memory.room);
     this.id = creepId;
     return true;
   }
