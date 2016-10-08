@@ -44,7 +44,7 @@ roomClass.assesSituation = function(){
 
 roomClass.orderCreeps =  function(){
   var length = this.idleCreeps.length;
-  for(int i = 0;i<length;i++){
+  for(var i = 0;i<length;i++){
     var creep = Game.getObjectById(this.idleCreeps.pop());
     creep.setAction("fill");
     creep.setPrimaryTarget(this.spawns[0]);
