@@ -50,7 +50,7 @@ roomClass.orderCreeps =  function(){
     creep.setPrimaryTarget(this.spawns[0]);
     creep.setSecondaryTarget(this.sources[0]);                                
   }
-  for(int i = 0;i<this.creeps.length;i++){
+  for(var i = 0;i<this.creeps.length;i++){
     this.creeps[i].doAction();
   }
   this.spawnCreeps();
@@ -58,7 +58,7 @@ roomClass.orderCreeps =  function(){
 
 roomClass.spawnCreeps = function(){
   if(this.spawns[0].energy == 300){
-     var creep = this.spawns[0].createCreep([WORK,WORK,CARRY,MOVE]
+     var creep = this.spawns[0].createCreep([WORK,WORK,CARRY,MOVE],
                                            {primaryTarget:this.spawns[0],
                                             secondarTarget:this.sources[0],
                                             action:"fill",
@@ -74,20 +74,20 @@ roomClass.saveMemory = function(){
   this.room.memory.idleCreeps = this.idleCreeps;
   this.room.memory.spawns = this.convertToId(this.spawns);
   this.room.memory.sources = this.convertToId(this.sources);
-  for(int i = 0;i<this.creeps.length;i++){
+  for(var i = 0;i<this.creeps.length;i++){
     this.creeps[i].saveMemory(); 
   }
 };
 
 roomClass.convertToId = function(array){
-  for(int i = 0;i<array.length;i++){
+  for(var i = 0;i<array.length;i++){
     array[i] = array[i].id; 
   }
   return array;
 };
 
 roomClass.convertToObject = function(array){
-  for(int i = 0;i<array.length;i++){
+  for(var i = 0;i<array.length;i++){
     array[i] = Game.getObjectById(array[i]); 
   }
   return array;
