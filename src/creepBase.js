@@ -25,7 +25,7 @@ function creepBase(creepId){
     this.action = creep.memory.action;
     this.movePath = creep.memory.movePath; //Can be two things, an number or a string, the number says path to use in room memory , string is a serialized path
     this.creep = creep;
-    this.room = Game.getObjectById(creep.memory.room);
+    this.room = Game.getObjectById(creep.room);
     this.id = creepId;
     return true;
   }
