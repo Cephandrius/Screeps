@@ -8,11 +8,11 @@ function creepBuilder(creepId){//I don't know how constructors are inherited
   new creepBase.call(this,creepId);
   this.repairConstantly = this.creep.memory.repairConstantly;
   this.fillingEnergy = this.creep.memory.fillingEnergy;
-}
+};
 
 creepBuilder.setRepairConstantly = function(temp){
   this.repairConstantly = temp;
-}
+};
 
 /*
 args: nothing
@@ -35,7 +35,7 @@ creepBuilder.gatherEnergy = function(){
   }else{
     return true;
   }
-}
+};
 
 /*
 args: nothing
@@ -70,7 +70,7 @@ creepBuilder.buildAction = function(){
       }
     }
   }
-}
+};
 
 creepBuilder.repairAction = function(){
   var result = this.move();
@@ -92,7 +92,7 @@ creepBuilder.repairAction = function(){
       }
     }
   }
-}
+};
 
 creepBuilder.fill = function(){
    var result = this.move();
@@ -113,6 +113,6 @@ creepBuilder.fill = function(){
       }
     }
   }
-}
+};
 
 module.exports = creepBuilder;
