@@ -23,7 +23,7 @@ action: will collect energy
 return: whether or not the creep is full
 notes: this is a priavte function, don't use
 */
-creepBuilder.gatherEnergy = function(){
+creepBuilder.prototype.gatherEnergy = function(){
   var result = this.creep.withdraw(this.secondaryTarget,RESOURCE_ENERGY);
   if(result == ERR_INVALID_TARGET){
     this.creep.harvest(this.secondaryTarget);
@@ -46,7 +46,7 @@ action: will run the build action for the builder
 returns: nothing
 notes: none
 */
-creepBuilder.buildAction = function(){
+creepBuilder.prototype.buildAction = function(){
   var result = this.move();
   if(result){
     if(this.fillingEnergy){
@@ -75,7 +75,7 @@ creepBuilder.buildAction = function(){
   }
 };
 
-creepBuilder.repairAction = function(){
+creepBuilder.prototype.repairAction = function(){
   var result = this.move();
   if(result){
     if(this.fillingEnergy){
@@ -97,7 +97,7 @@ creepBuilder.repairAction = function(){
   }
 };
 
-creepBuilder.fill = function(){
+creepBuilder.prototype.fill = function(){
    var result = this.move();
   if(result){
     if(this.fillingEnergy){
@@ -118,7 +118,7 @@ creepBuilder.fill = function(){
   }
 };
 
-creepBuilder.saveMemory = function(){
+creepBuilder.prototype.saveMemory = function(){
   this.creep.memory.repairConstantly = this.repairConstantly;
   this.creep.memory.fillingEnergy = this.fillingEnergy;
   creepBase.prototype.saveMemory();
