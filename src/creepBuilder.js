@@ -119,5 +119,5 @@ creepBuilder.saveMemory = function(){
   this.creep.memory.repairConstantly = this.repairConstantly;
   this.creep.memory.fillingEnergy = this.fillingEnergy;
   super.saveMemory();
-}
+};
 module.exports = creepBuilder;
