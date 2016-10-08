@@ -8,7 +8,7 @@ Room:
   movePaths
     an array with list of commonly used paths
 */
-
+var compareObjects = require("compareObjects");
 /*
 args: a valid creepId
 action: set up the variable for the creep class
@@ -59,7 +59,7 @@ creepBase.move = function(){
     console.log("Error in move function of creep:",this.id," with error code ",result);
   }
   
-  if(this.creep.pos == path[path.length-1]){
+  if(compareObjects(this.creep.pos,path[path.length-1])){
     return true;
   }
 }
