@@ -30,7 +30,8 @@ function creepBase(creepId){
     return true;
   }
   return false;
-}
+};
+
 creepBase.doAction = function(){
   var actionConstants = this.room.roomhandler.ACTIONS;
   if(actionConstants[this.action] == undefined){
@@ -38,7 +39,7 @@ creepBase.doAction = function(){
   }else{
     this.room.addIdleCreep(this.id);
   }
-}
+};
 
 /*
 args: none
@@ -64,7 +65,7 @@ creepBase.move = function(){
   if(compareObjects(this.creep.pos,path[path.length-1])){
     return true;
   }
-}
+};
 
 /*
 args: none
@@ -77,6 +78,10 @@ creepBase.moveAction = function(){
   if(result == true){
     this.room.addIdleCreep(this.id);
   }
-}
+};
+
+creepBase.setAction = function(action){
+  this.action = action; 
+};
 
 module.exports = creepBase;
