@@ -76,3 +76,5 @@ creepBase.moveAction = function(){
     this.room.addIdleCreep(this.id);
   }
 }
+
+module.exports = creepBase;
