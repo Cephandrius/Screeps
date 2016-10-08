@@ -92,3 +92,4 @@ room.convertToObject = function(array){
   return array;
 };
 
+module.exports = room;
