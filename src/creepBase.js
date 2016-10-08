@@ -84,4 +84,7 @@ creepBase.setAction = function(action){
   this.action = action; 
 };
 
+creepBase.setPrimaryTarget = function(target){
+ this.primaryTarget = target; 
+};
 module.exports = creepBase;
