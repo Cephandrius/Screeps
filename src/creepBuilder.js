@@ -5,7 +5,6 @@ Methods:
 var creepBase = require("creepBase");
 
 function creepBuilder(creepId){//I don't know how constructors are inherited
-  super(creepId);
   this.repairConstantly = this.creep.memory.repairConstantly;
   this.fillingEnergy = this.creep.memory.fillingEnergy;
 };
@@ -104,7 +103,7 @@ creepBuilder.fill = function(){
         var end = this.primaryTarget.pos;
         end.x = end.x-1;
         var result = this.room.findPath(this.creep.pos,end,
-                                        {ignoreCreeps:true,serialize:true})
+                                        {ignoreCreeps:true,serialize:true});
         this.movePath = result;
       }
     }else{//This needs to be modified
@@ -118,6 +117,6 @@ creepBuilder.fill = function(){
 creepBuilder.saveMemory = function(){
   this.creep.memory.repairConstantly = this.repairConstantly;
   this.creep.memory.fillingEnergy = this.fillingEnergy;
-  super.saveMemory();
+  creepBase.prototype.saveMemory();
 };
 module.exports = creepBuilder;
