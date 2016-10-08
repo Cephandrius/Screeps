@@ -8,7 +8,7 @@ methods:
 var creepBuilder = require("creepBuilder");
 var creepBase = require("creepBase");
 
-function room(roomId){
+function roomClass(roomId){
   this.room = Game.getObjectById(roomId);
   if(this.room!=null){
     if(this.room.memory.initialized == undefined){
@@ -25,7 +25,7 @@ function room(roomId){
   }
 };
 
-room.initialSetup = function(){
+roomClass.initialSetup = function(){
   this.spawns = this.room.find(FIND_MY_STRUCTURES,{
     filter: { structureType: STRUCTURE_SPAWN }  
   });
@@ -34,15 +34,15 @@ room.initialSetup = function(){
   this.roomPaths = [];
 };
 
-room.addIdleCreep = function(creepId){
+roomClass.addIdleCreep = function(creepId){
   this.idleCreeps.push(creepId);
 };
 
-room.assesSituation = function(){
+roomClass.assesSituation = function(){
 //Currently not finished  
 };
 
-room.orderCreeps =  function(){
+roomClass.orderCreeps =  function(){
   var length = this.idleCreeps.length;
   for(int i = 0;i<length;i++){
     var creep = Game.getObjectById(this.idleCreeps.pop());
@@ -56,7 +56,7 @@ room.orderCreeps =  function(){
   this.spawnCreeps();
 };
 
-room.spawnCreeps = function(){
+roomClass.spawnCreeps = function(){
   if(this.spawns[0].energy == 300){
      var creep = this.spawns[0].createCreep([WORK,WORK,CARRY,MOVE]
                                            {primaryTarget:this.spawns[0],
@@ -68,7 +68,7 @@ room.spawnCreeps = function(){
   }
 };
 
-room.saveMemory = function(){
+roomClass.saveMemory = function(){
   this.room.memory.creeps = this.convertToId(this.creeps);
   this.room.memory.roomPaths = this.roomPaths;
   this.room.memory.idleCreeps = this.idleCreeps;
@@ -79,18 +79,18 @@ room.saveMemory = function(){
   }
 };
 
-room.convertToId = function(array){
+roomClass.convertToId = function(array){
   for(int i = 0;i<array.length;i++){
     array[i] = array[i].id; 
   }
   return array;
 };
 
-room.convertToObject = function(array){
+roomClass.convertToObject = function(array){
   for(int i = 0;i<array.length;i++){
     array[i] = Game.getObjectById(array[i]); 
   }
   return array;
 };
 
-module.exports = room;
+module.exports = roomClass;
