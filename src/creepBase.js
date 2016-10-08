@@ -1,4 +1,6 @@
 /* Implementation List
+Methods:
+  saveMemory
 Roomhandler:
   ACTIONS
     format is a string with name of action and then the function to run
