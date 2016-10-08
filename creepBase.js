@@ -1,9 +1,0 @@
-/*
-Class Vars to implemented
-primaryTarget
-secondaryTarget
-action
-movePath
-room
-creep
-*/
