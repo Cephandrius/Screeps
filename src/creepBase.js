@@ -4,11 +4,6 @@ Methods:
 Roomhandler:
   ACTIONS
     format is a string with name of action and then the function to run
-Room:
-  addIdleCreep
-    accepts a creepId and the stores it in a array/object
-  movePaths
-    an array with list of commonly used paths
 */
 var compareObjects = require("compareObjects");
 /*
@@ -33,7 +28,7 @@ function creepBase(creepId){
 };
 
 creepBase.doAction = function(){
-  var actionConstants = this.room.roomhandler.ACTIONS;
+  var actionConstants = this.room.ACTIONS;
   if(actionConstants[this.action] == undefined){
     actionConstants[this.action].call(this);
   }else{
@@ -92,4 +87,7 @@ creepBase.setSecondaryTarget = function(target){
  this.secondaryTarget = target; 
 };
 
+creepBase.saveMemory = function(){
+  
+};
 module.exports = creepBase;
