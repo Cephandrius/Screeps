@@ -27,7 +27,7 @@ function creepBase(creepId){
   return false;
 };
 
-creepBase.doAction = function(){
+creepBase.prototype.doAction = function(){
   var actionConstants = this.room.ACTIONS;
   if(actionConstants[this.action] == undefined){
     actionConstants[this.action].call(this);
@@ -42,7 +42,7 @@ action: get the creep closer to end of movepath
 returns: will return true if it as end of movepath
 notes: a private method, never call
 */
-creepBase.move = function(){
+creepBase.prototype.move = function(){
   var path = this.movePath;
   var type = typeof path;
   if(type == "number"){
@@ -68,26 +68,26 @@ action: will do the move action
 returns: nothing
 notes: this is differnt from move() because this will notify the Room when it is at the end of the path
 */
-creepBase.moveAction = function(){
+creepBase.prototype.moveAction = function(){
   var result = this.move();
   if(result == true){
     this.room.addIdleCreep(this.id);
   }
 };
 
-creepBase.setAction = function(action){
+creepBase.prototype.setAction = function(action){
   this.action = action; 
 };
 
-creepBase.setPrimaryTarget = function(target){
+creepBase.prototype.setPrimaryTarget = function(target){
  this.primaryTarget = target; 
 };
 
-creepBase.setSecondaryTarget = function(target){
+creepBase.prototype.setSecondaryTarget = function(target){
  this.secondaryTarget = target; 
 };
 
-creepBase.saveMemory = function(){
+creepBase.prototype.saveMemory = function(){
   this.creep.memory.primaryTarget = this.primaryTarget.id;
   this.creep.memory.secondaryTarget = this.secondaryTarget.id;
   this.creep.memory.action = this.action;
