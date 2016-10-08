@@ -53,9 +53,9 @@ creepBase.move = function(){
   path = Room.deserializePath(path);
   
   var result = this.creep.moveByPath(path);
-  if(result == Game.ERR_NOT_FOUND){
+  if(result == ERR_NOT_FOUND){
     this.creep.moveTo(path[0].x,path[0].y);    
-  }else if(result != Game.OK || result != Game.ERR_TIRED){
+  }else if(result != OK || result != ERR_TIRED){
     console.log("Error in move function of creep:",this.id," with error code ",result);
   }
   
