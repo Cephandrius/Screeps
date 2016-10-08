@@ -5,12 +5,16 @@ Methods:
 var creepBase = require("creepBase");
 
 function creepBuilder(creepId){//I don't know how constructors are inherited
-  this.repairConstantly = this.creep.memory.repairConstantly;
-  this.fillingEnergy = this.creep.memory.fillingEnergy;
+    creepBase.call(this, id); 
+    this.repairConstantly = this.creep.memory.repairConstantly;
+    this.fillingEnergy = this.creep.memory.fillingEnergy;
 };
 
-creepBuilder.setRepairConstantly = function(temp){
-  this.repairConstantly = temp;
+creepBuilder.prototype = Object.create(creepBase.prototype); 
+creepBuilder.prototype.constructor = creepBuilder;
+
+creepBuilder.prototype.setRepairConstantly = function(temp){
+    this.repairConstantly = temp;
 };
 
 /*
