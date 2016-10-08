@@ -53,6 +53,7 @@ room.orderCreeps =  function(){
   for(int i = 0;i<this.creeps.length;i++){
     this.creeps[i].doAction();
   }
+  this.spawnCreeps();
 };
 
 room.spawnCreeps = function(){
