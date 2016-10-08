@@ -25,7 +25,7 @@ function roomClass(roomId){
   }
 };
 
-roomClass.initialSetup = function(){
+roomClass.prototype.initialSetup = function(){
   this.spawns = this.room.find(FIND_MY_STRUCTURES,{
     filter: { structureType: STRUCTURE_SPAWN }  
   });
@@ -34,15 +34,15 @@ roomClass.initialSetup = function(){
   this.roomPaths = [];
 };
 
-roomClass.addIdleCreep = function(creepId){
+roomClass.prototype.addIdleCreep = function(creepId){
   this.idleCreeps.push(creepId);
 };
 
-roomClass.assesSituation = function(){
+roomClass.prototype.assesSituation = function(){
 //Currently not finished  
 };
 
-roomClass.orderCreeps =  function(){
+roomClass.prototype.orderCreeps =  function(){
   var length = this.idleCreeps.length;
   for(var i = 0;i<length;i++){
     var creep = Game.getObjectById(this.idleCreeps.pop());
@@ -56,7 +56,7 @@ roomClass.orderCreeps =  function(){
   this.spawnCreeps();
 };
 
-roomClass.spawnCreeps = function(){
+roomClass.prototype.spawnCreeps = function(){
   if(this.spawns[0].energy == 300){
      var creep = this.spawns[0].createCreep([WORK,WORK,CARRY,MOVE],
                                            {primaryTarget:this.spawns[0],
@@ -68,7 +68,7 @@ roomClass.spawnCreeps = function(){
   }
 };
 
-roomClass.saveMemory = function(){
+roomClass.prototype.saveMemory = function(){
   this.room.memory.creeps = this.convertToId(this.creeps);
   this.room.memory.roomPaths = this.roomPaths;
   this.room.memory.idleCreeps = this.idleCreeps;
@@ -79,14 +79,14 @@ roomClass.saveMemory = function(){
   }
 };
 
-roomClass.convertToId = function(array){
+roomClass.prototype.convertToId = function(array){
   for(var i = 0;i<array.length;i++){
     array[i] = array[i].id; 
   }
   return array;
 };
 
-roomClass.convertToObject = function(array){
+roomClass.prototype.convertToObject = function(array){
   for(var i = 0;i<array.length;i++){
     array[i] = Game.getObjectById(array[i]); 
   }
