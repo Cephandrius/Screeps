@@ -15,7 +15,7 @@ action: set up the variable for the creep class
 returns: will return if class was iniated correctly
 notes: none
 */
-var creepBase = function(creepId){
+function creepBase(creepId){
   var creep = Game.getObjectById(creepId);
   if(creep!=null){
     this.primaryTarget = creep.memory.primaryTarget;
