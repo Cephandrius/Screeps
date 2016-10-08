@@ -1,6 +1,6 @@
 /*Implementation list:
 Methods:
-  fill(steal from carrier)
+  saveMemory
 */
 var creepBase = require("creepBase");
 
